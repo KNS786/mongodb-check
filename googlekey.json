@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tutora-usage-app",
+  "private_key_id": "0451bb58a079f2e05ef7c77f0eca1c1091cb1658",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLOFHt6kOATWig\nnc5EDOBb6t51AOFWuzJO19cSDi0//t8qXiUzBNCEPPJGkmZdDxABL8XY9OhEEyiD\nlFo36NmPWRnzov4/sbihVNfdEZDB1xKs3Ps/pDUuqfUEiMYtnCm1rnN80AVLgvhl\nbVX+K6BjC1k4WPvU9pgajK+ucBNOuzvr9rNqaqRYK8H45Lxue4q/epoj0FmreXMW\nd8tpywnCpIJVnTTmLQBy8vchLU0jVdiXigJ6fokP1m6Xhz3PoMo2v6zG/NNku1Z+\nZXOhLw4bWim6sCt2Jbc6LzEanaJeMBAgZlYYyyATQH9bXGZqN29jQRWiXIpQUTsD\nDWsibK2fAgMBAAECggEAFkkn2vJs0p4qkiqcGyRaWlooaSZej9dZjgHniQha+ACo\nUooehDjL8SSJ4Sle5mendqnZhZBeBFEhiUR0nFsBuNGpoelG/o8r0y1tusWZXViL\nqL9XIkSMvIBQ6V1idlAA1va5nX9mhUBoox7ZZlU8coAlGaPQgitExOyWu4d45pI5\nssaXjBStN0Ho/y2DfOQaZY9dvuysRwlnnCKpyAooXGu/Gy/fxwRlZhd+eTicQyNM\nU1BIKbOpOFQfmdTt4iv1c59vPUZyVlJkCGNhPzm0x/HvSNzZmbfhpHhMfUYK/H7+\nDD9d+QUaDHQbDdpZQjSSssOno9TRHhkYPGoqbAtFeQKBgQD2tPh9yGE0on2l6PHN\n6Px9kmeI+jyq5E/OFT3LrdqCaboK0elk3Efh68xbiBd+pqvdwIW27XGSFkfJWUTN\nLKjgAdNDNSnmlSyZ0p6YqTAqS0k09O0+Vf/8+CYbVtTInHculswlrrECBY9ODbVK\nZhuG7VcZDGW0GwFUMV/yQgqw4wKBgQDS3/+6yqvRGMUliLe+UDk57TdsjXnHpqcu\nem5mFKKdIEbGV/Y+tqUqsUr9vanuskB+LyeBlj8xCRxhI71NlUKopTyrOjXR0bRW\nxTr0GETY2rDqswVFA+I3DrWX711E9A3HhsYHglIlHz9MO8HbIe3Io9nfQNohA1Ry\n9xBuE4IZFQKBgAnuMuptPGxv9frNq54MOM2dLQm4eOSwF/5FoJ0oPFlvhAuXc3uZ\n2lLfuPQeQEPa1aQxcbBxUlb9CpqyOzC/EXUi3awg4bTkYE04yyV9+fBZ43J8QWh2\n8bzvCCmljx8cHTgE3ebOZ1Wbf682oguCnK0LtKvPcfCT/bOz4RbRTbjdAoGBAIBK\ndKtwZ81jM3WdUqP+7IHYVrK884zKT8WQCKAkB7ZuD4DVvOL0fVGW4Re0DrFAUsox\n5+gHv1QWxeQ3ORD9MLunI1zMojePTBbKEQ61wRTpH176IMeXEEYMtd/EaUrs64Eq\n9klVOKKK+xhm9o5Zeu9o98DCFLKm8vaqZp2BUtHtAoGAdyDqlzAOutYMFIqVvY8P\n9JkePojJ3abt8drZdu/mjCZnf0LsbcO4b+mgd4KfaxAT6EJmUYtXWefn1TxYvrH7\nkpTZIfJ532QnJlGq7fu5n2766MZdSYEHFfIGosTkaPp2se7JVSTt7hC8wMIK8v/a\nv0d4ljOFgVn8nu2HX+sjAfs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tutorausagestatus@tutora-usage-app.iam.gserviceaccount.com",
+  "client_id": "113602172481981691712",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tutorausagestatus%40tutora-usage-app.iam.gserviceaccount.com"
+}
