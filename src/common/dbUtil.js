@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTutors = exports.getTutrorsId = exports.getUserProfile = exports.getTutorName = exports.getAllUserId = exports.getAllStudent = exports.getTotalNoOfStaff = exports.getMyStudentsCount = exports.getAllTutor = exports.lastSessionInstance = exports.deleteSession = exports.listAllSessions = exports.updateSession = exports.deleteParticipants = exports.createParticipants = exports.createSession = exports.fetchAllActiveClassDef = exports.updateDateInClassDef = void 0;
+exports.getTotalNoOfStaffInTutor = exports.getTutorsUsage = exports.getTutors = exports.getTutrorsId = exports.getUserProfile = exports.getTutorName = exports.getAllUserId = exports.getAllStudent = exports.getTotalNoOfStaff = exports.getMyStudentsCount = exports.getAllTutor = exports.lastSessionInstance = exports.deleteSession = exports.listAllSessions = exports.updateSession = exports.deleteParticipants = exports.createParticipants = exports.createSession = exports.fetchAllActiveClassDef = exports.updateDateInClassDef = void 0;
 const mongodb_1 = require("mongodb");
 const mongo_1 = require("../mongo");
 // export const createTutor = async (userId: string, userName: string) => {
@@ -450,7 +450,6 @@ const getAllUserId = () => __awaiter(void 0, void 0, void 0, function* () {
     const query = { "_id": 0, "user": '$_id', "name": '$fullName', 'role': '$roles' };
     const pipeLine = [{ $project: query }];
     const users = yield db.collection('User').aggregate(pipeLine).toArray();
-    console.log("USERS LENGTH : ===> " + users.length);
     return users;
 });
 exports.getAllUserId = getAllUserId;
@@ -465,7 +464,7 @@ exports.getTutorName = getTutorName;
 const getUserProfile = (studentId) => __awaiter(void 0, void 0, void 0, function* () {
     const db = yield (0, mongo_1.getMongoDb)();
     const query = { students: { $elemMatch: { $eq: studentId } } };
-    const queryResult = { _id: 1 };
+    const queryResult = { _id: 1, name: 1 };
     const results = yield db.collection('UserProfile').find(query, queryResult).toArray();
     return results;
 });
@@ -485,3 +484,45 @@ const getTutors = (query, role) => __awaiter(void 0, void 0, void 0, function* (
     return tutorsList;
 });
 exports.getTutors = getTutors;
+//newly change over aggregate functions 
+const getTutorsUsage = () => __awaiter(void 0, void 0, void 0, function* () {
+    const db = yield (0, mongo_1.getMongoDb)();
+    const data = yield db.collection('Tutor').aggregate([
+        { $match: { role: 'Admin' } },
+        {
+            $lookup: {
+                from: 'User',
+                localField: 'user',
+                foreignField: '_id',
+                as: 'userData'
+            }
+        },
+        {
+            $lookup: {
+                from: 'Student',
+                localField: '_id',
+                foreignField: 'tutor',
+                as: 'studentData'
+            }
+        },
+        {
+            $project: {
+                _id: 1,
+                role: 1,
+                'userData': 1,
+                'studentData': 1
+            }
+        }
+    ]).toArray();
+    return data;
+});
+exports.getTutorsUsage = getTutorsUsage;
+const getTotalNoOfStaffInTutor = (tutorIds) => __awaiter(void 0, void 0, void 0, function* () {
+    const db = yield (0, mongo_1.getMongoDb)();
+    tutorIds = tutorIds.map(String);
+    const query = { primaryTutorId: { $in: tutorIds }, role: 'Staff' };
+    const queryResult = { '_id': 1, primaryTutorId: 1 };
+    const getTotalStaff = yield db.collection('Tutor').find(query, queryResult).toArray();
+    return getTotalStaff;
+});
+exports.getTotalNoOfStaffInTutor = getTotalNoOfStaffInTutor;

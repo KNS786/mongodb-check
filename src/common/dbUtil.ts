@@ -466,7 +466,6 @@ export const getAllUserId = async () => {
   const query = {"_id":0,"user":'$_id',"name":'$fullName','role':'$roles'};
   const pipeLine = [{$project:query}];
   const users = await db.collection('User').aggregate(pipeLine).toArray();
-  console.log("USERS LENGTH : ===> " + users.length);
   return users;
 }
 
@@ -482,7 +481,7 @@ export const getTutorName = async (userIds: any ) => {
 export const getUserProfile = async(studentId: ObjectId) => {
   const db = await getMongoDb();
   const query = {students: { $elemMatch:{$eq:studentId}}};
-  const queryResult:any = {_id:1};
+  const queryResult:any = {_id:1,name:1};
   const results = await db.collection('UserProfile').find(query,queryResult).toArray();
   return results;
 }
@@ -502,3 +501,47 @@ export const getTutors = async(query: Object, role:Object) => {
   return tutorsList;
 }
 
+//newly change over aggregate functions 
+
+export const getTutorsUsage = async () => {
+  const db = await getMongoDb();
+  const data  = await db.collection('Tutor').aggregate([
+    { $match:{role:'Admin'} },
+    {
+     $lookup: {
+         from:'User',
+         localField: 'user',
+         foreignField: '_id',
+         as:'userData'
+     }
+    },
+    {
+     $lookup:{
+         from:'Student',
+         localField:'_id',
+         foreignField:'tutor',
+         as:'studentData'
+     }
+    },
+    {
+     $project:{
+       _id:1,
+       role:1,
+       'userData':1,
+       'studentData':1
+     }
+    }
+ ]).toArray();
+
+ return data;
+
+}
+
+export const getTotalNoOfStaffInTutor = async (tutorIds: any) => {
+  const db = await getMongoDb();
+  tutorIds = tutorIds.map(String);
+  const query = {primaryTutorId : {$in : tutorIds},role:'Staff'};
+  const queryResult:any = {'_id': 1,primaryTutorId:1}
+  const getTotalStaff = await db.collection('Tutor').find(query,queryResult).toArray();
+  return getTotalStaff;
+}

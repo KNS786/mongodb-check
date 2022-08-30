@@ -117,17 +117,6 @@ async function fileUploadGoogleDrive(fileName: any ){
 
 export async function processRecord(){
 
-  // const tutorsQuery = {primaryTutorId: 1, name: 1};
-  // const tutorTable:any = {tutorId: "Tutor Id", name: "Tutor Name", totalStudent: "Students" }
-  // writeCSVFile(tutorTable);
-  // const allTutors = await getAllTutor(tutorsQuery);
-  // for(const value of allTutors){
-  //   tutorTable.tutorId = value.primaryTutorId;
-  //   tutorTable.name = value.name;
-  //   tutorTable.totalStudent = await getMyStudentsCount(value.primaryTutorId);
-  //   writeCSVFile(tutorTable);
-  // }
-
   const tutorStudentsFilePath = process.cwd()+"/tutora-usage-tutors_students-"+dayjs().format("MM-DD-YYYY")+".csv";
   const userFilePath = process.cwd()+"/tutora-usage-users-"+dayjs().format("MM-DD-YYYY")+".csv"
 
@@ -202,18 +191,5 @@ export async function processRecord(){
 
   await fileUploadGoogleDrive(userFilePath);
 
-  // const tutorsQuery = { name:1, students:1, user:1 }
-  // const allTutorsInUserProfile = await getTutorsId(tutorsQuery);
-  // const tutorsTable = {tutorId:'Tutor Id', name: 'Tutor Name',totalStudent:'total Students', students : [] }
-  // const tutorsInfo:any = [];
-  // allTutorsInUserProfile.forEach((value) => {
-  //   console.log("_id ::: " + value._id);
-  //   tutorsTable.tutorId = value.user;
-  //   tutorsTable.name = value.name;
-  //   tutorsTable.totalStudent = value.students.length;
-  //   tutorsTable.students = value.students;
-  //   console.log("STUDENTS LENGTH :::: => " + value.students.length );
-  //   tutorsInfo.push(tutorsTable);
-  // });
   
 }

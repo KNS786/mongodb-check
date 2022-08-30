@@ -1,12 +1,10 @@
-//import {regenerateNeverEndingSession} from './classes/regenerateNeverEndingSession';
-//import {getMongoDb} from './mongo';
-import {processRecord} from './tutoraUsage/tutoraUsage';
+import { generateTutorsReport } from "./tutora-usage-new/tutoraUsage";
+import { generateUsersReport } from "./tutora-usage-new/userInfo";
+import dotenv from "dotenv";
+dotenv.config();
 
-async function StartConn(){
-    await processRecord();
+async function start() {
+  await generateTutorsReport();
+  await generateUsersReport();
 }
-StartConn().then(()=>{
-    console.log("DB Started ...");
-}).catch(e=>{
-    console.log("Error ::: => " + e);
-})
+start();
